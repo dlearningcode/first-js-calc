@@ -21,6 +21,8 @@ const plusBtn=document.getElementById("add")
 const equalsBtn=document.getElementById("equals")
 const clearBtn=document.getElementById("clear") 
 const dotBtn=document.getElementById("dot")
+const signBtn=document.getElementById("sign")
+const deleteBtn=document.getElementById("delete")
 
 export default function calculatorOps() {
     
@@ -42,6 +44,8 @@ export default function calculatorOps() {
     plusBtn.addEventListener("click", () => {myCalc("plus")})
     equalsBtn.addEventListener("click", equalsResult)
     clearBtn.addEventListener("click", clearCalculator)
+    deleteBtn.addEventListener("click", deleteLast)
+    signBtn.addEventListener("click", toggleSign)
 
 }
 
@@ -69,6 +73,15 @@ function toggleSign(){
         result=result.replace("-","")
     } else {
         result="-"+result
+    }
+    display.innerHTML=result
+}
+
+function deleteLast(){
+    if (result.length==1){
+        result="0"
+    } else {
+        result=result.slice(0,-1)
     }
     display.innerHTML=result
 }
@@ -141,8 +154,7 @@ function equalsResult(){
             result=middleMath.toString()
             console.log(operator)
             display.innerHTML=result
-            result="0"
-            saveResult=0
+            saveResult=result
             operator=""
             break
         case "minus":
@@ -152,8 +164,7 @@ function equalsResult(){
             result=middleMath.toString()
             console.log(operator)
             display.innerHTML=result
-            result="0"
-            saveResult=0
+            saveResult=result
             operator=""
             break
         case "times":
@@ -163,8 +174,7 @@ function equalsResult(){
             result=middleMath.toString()
             console.log(operator)
             display.innerHTML=result
-            result="0"
-            saveResult=0
+            saveResult=result
             operator=""
             break
         case "dividedBy":
@@ -174,8 +184,7 @@ function equalsResult(){
             result=middleMath.toString()
             console.log(operator)
             display.innerHTML=result
-            result="0"
-            saveResult=0
+            saveResult=result
             operator=""
             break
         default:
