@@ -25,6 +25,7 @@ h1 {
     width: 14rem;
     height: minmax(20rem, 100%);
     background: #e72525;
+    box-shadow: 1px 1px 8px #00000060, -1px -1px 5px #ff5858;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,6 +37,7 @@ h1 {
     width: 96%;
     height: minmax(3rem, 100%);
     background: #210000;
+    box-shadow: -2px -2px 5px #891616, 3px 5px 5px #fb4040;
     border-radius: 5px;
     text-align: right;
     padding: 0 1rem;
@@ -43,6 +45,10 @@ h1 {
     font-size: 2rem;
     color: #ff9900ea;
     margin: 1.5rem auto .5rem;
+    border-bottom: #fb4040 2px solid;
+    border-right: #fb4040 2px solid;
+    border-top: #891616 2px solid;
+    border-left: #891616 2px solid;
 }
 
 .buttons {
@@ -61,7 +67,18 @@ h1 {
     outline: none;
     border: 0;
     margin: .25rem;
-    box-shadow: #1ba539;
+    box-shadow: 3px 3px 3px #891616;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    /* background: #ff9900ea;
+    color: #fff; */
+}
+
+.button:active {
+    transform: scale(0.95);
+    box-shadow: -2px -2px 2px #891616;
 }
 
 .function-btn {
