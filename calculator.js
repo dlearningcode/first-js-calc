@@ -3,6 +3,7 @@ let display=document.getElementById("display")
 let operator=""
 let saveResult=0
 let middleMath=0
+let resultCheck
 
 const zeroKey=document.getElementById("zero")
 const oneKey=document.getElementById("one")
@@ -63,16 +64,29 @@ function addInput (input){
 }
 
 function addDot(){
-    if (result.includes(".")){ return }
-    result+="."
+    resultCheck=result.toString()
+
+    if (resultCheck.includes(".") && result != saveResult){ return }
+
+    if (result=="0"){
+        result="."
+    } else if (result!="0" && result!=saveResult) {
+        result+="."
+    } else {
+        saveResult=result
+        result="."
+    }
+    console.log(result)
     display.innerHTML=result
 }
 
 function toggleSign(){
-    if (result.includes("-")){
-        result=result.replace("-","")
+    resultCheck=result.toString()
+
+    if (resultCheck.includes("-")){
+        result=resultCheck.replace("-","")
     } else {
-        result="-"+result
+        result="-"+resultCheck
     }
     display.innerHTML=result
 }
