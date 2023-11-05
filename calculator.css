@@ -15,8 +15,14 @@ body {
     align-items: center;
 }
 
+h1 {
+    color: #2c0101;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
 .calculator {
-    width: 300px;
+    width: 14rem;
     height: 350px;
     background: #e72525;
     display: flex;
@@ -26,17 +32,18 @@ body {
     border-radius: 20px;
 }
 
-.display {
-    width: 100%;
-    height: 3rem;
-    background: #fff;
+#display {
+    width: 96%;
+    height: minmax(3rem, 100%);
+    background: #210000;
     border-radius: 5px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 1rem;
+    font-family: 'DM Mono', monospace;
     font-size: 2rem;
-    color: #000;
+    color: #ff9900ea;
     font-weight: bold;
 }
 
