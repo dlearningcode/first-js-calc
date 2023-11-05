@@ -7,3 +7,7 @@ I asked Bing to give me five starter projects to practice and hone my JavaScript
 My plan is to create the buttons, then add onclick triggers that add the string value of each key to a variable and display it in the display.
 
 When the user hits one of the operators, that saves the operator for a switch case
+
+2023-11-04 Got the basic functionality. Was calling functions from the event listener rather than references; that hung me up for about two hours to diagnose.
+
+Now, I have to make the screen clear and update properly for all the keys and operations. then it's figuring out how to refactor for tons of repetition. And style, of course.
