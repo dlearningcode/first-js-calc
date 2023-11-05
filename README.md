@@ -11,3 +11,5 @@ When the user hits one of the operators, that saves the operator for a switch ca
 2023-11-04 Got the basic functionality. Was calling functions from the event listener rather than references; that hung me up for about two hours to diagnose.
 
 Now, I have to make the screen clear and update properly for all the keys and operations. then it's figuring out how to refactor for tons of repetition. And style, of course.
+
+2023-11-05 I have all the functionality nailed, now just finalizing CSS. Want to make hover and click effects, and get the result display to grow to accommodate large numbers -- right now, they're overflowing the div.
