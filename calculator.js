@@ -1,7 +1,8 @@
 let result=""
 let display=document.getElementById("display")
 let operator=""
-let operand=0
+let saveResult=0
+let middleMath=0
 
 const zeroKey=document.getElementById("zero")
 const oneKey=document.getElementById("one")
@@ -19,81 +20,21 @@ const subtractBtn=document.getElementById("subtract")
 const plusBtn=document.getElementById("add")
 const equalsBtn=document.getElementById("equals")
 const clearBtn=document.getElementById("clear") 
+const dotBtn=document.getElementById("dot")
 
 export default function calculatorOps() {
-    console.log("oneKey:", oneKey)
-    console.log("dividedByBtn:", dividedByBtn)
-    console.log("clearBtn:", clearBtn)
     
-    zeroKey.addEventListener("click", function(){
-        result+="0"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    oneKey.addEventListener("click", function(){
-        result+="1"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    twoKey.addEventListener("click", function(){
-        result+="2"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    threeKey.addEventListener("click", function(){
-        result+="3"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    fourKey.addEventListener("click", function(){
-        result+="4"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    fiveKey.addEventListener("click", function(){
-        result+="5"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    sixKey.addEventListener("click", function(){
-        result+="6"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    sevenKey.addEventListener("click", function(){
-        result+="7"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    eightKey.addEventListener("click", function(){
-        result+="8"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
-
-    nineKey.addEventListener("click", function(){
-        result+="9"
-        console.log(result)
-        display.innerHTML=result
-        }
-    )
+    zeroKey.addEventListener("click", () => {addInput("0")})
+    oneKey.addEventListener("click", () => {addInput("1")})
+    twoKey.addEventListener("click", () => {addInput("2")})
+    threeKey.addEventListener("click", () => {addInput("3")})
+    fourKey.addEventListener("click", () => {addInput("4")})
+    fiveKey.addEventListener("click", () => {addInput("5")})
+    sixKey.addEventListener("click", () => {addInput("6")})
+    sevenKey.addEventListener("click", () => {addInput("7")})
+    eightKey.addEventListener("click", () => {addInput("8")})
+    nineKey.addEventListener("click", () => {addInput("9")})
+    dotBtn.addEventListener("click", addDot)
 
     dividedByBtn.addEventListener("click", () => {myCalc("dividedBy")})
     multiplyByBtn.addEventListener("click", () => {myCalc("times")})
@@ -104,42 +45,85 @@ export default function calculatorOps() {
 
 }
 
+function addInput (input){
+    if (result=="0"){
+        result=input
+    } else if (result!="0" && result!=saveResult) {
+        result+=input
+    } else {
+        saveResult=result
+        result=input
+    }
+    console.log(result)
+    display.innerHTML=result
+}
+
+function addDot(){
+    if (result.includes(".")){ return }
+    result+="."
+    display.innerHTML=result
+}
+
+function toggleSign(){
+    if (result.includes("-")){
+        result=result.replace("-","")
+    } else {
+        result="-"+result
+    }
+    display.innerHTML=result
+}
+
 function myCalc(calcOperation){
     console.log('operation:', calcOperation)
 
-    // if (isNaN(result)){return}
+    // Check if result is a number
+    if (isNaN(Number(result))){return}
 
-    if (operator===""){
-        operand=result
+    if (operator===""){ // First time
+        saveResult=result // Take the result and save it
         operator=calcOperation
-        console.log(operand)
+        console.log(saveResult)
         console.log(operator)
-        result=""
+        // result="" // Clear the result
         display.innerHTML=result
-    } else {
+    } else { // Additional times
         switch (operator) {
             case "plus":
                 operator="plus"
-                let middleMath=Number(result)+Number(operand)
+                middleMath=Number(saveResult)+Number(result)
                 console.log(middleMath)
                 result=middleMath.toString()
                 operator=calcOperation
-                console.log(operator)
+                console.log('Operator going forward:',operator)
+                saveResult=result
                 display.innerHTML=result
                 break
             case "minus":
                 operator="minus"
-                result=Number(result)-Number(operand)
+                middleMath=Number(saveResult)-Number(result)
+                console.log(middleMath)
+                result=middleMath.toString()
+                operator=calcOperation
+                console.log('Operator going forward:',operator)
+                saveResult=result
                 display.innerHTML=result
                 break
             case "times":
-                operator="times"
-                result=Number(result)*Number(operand)
+                middleMath=Number(saveResult)*Number(result)
+                console.log(middleMath)
+                result=middleMath.toString()
+                operator=calcOperation
+                console.log('Operator going forward:',operator)
+                saveResult=result
                 display.innerHTML=result
                 break
             case "dividedBy":
-                operator="dividedBy"
-                result=Number(result)/Number(operand)
+                middleMath=Number(saveResult)/Number(result)
+                console.log(middleMath)
+                result=middleMath.toString()
+                operator=calcOperation
+                console.log('Operator going forward:',operator)
+                saveResult=result
                 display.innerHTML=result
                 break
             default:
@@ -152,29 +136,47 @@ function equalsResult(){
     switch (operator) {
         case "plus":
             operator="plus"
-            let middleMath=Number(result)+Number(operand)
+            middleMath=Number(saveResult)+Number(result)
             console.log(middleMath)
             result=middleMath.toString()
             console.log(operator)
             display.innerHTML=result
             result="0"
-            operand=0
+            saveResult=0
             operator=""
             break
         case "minus":
             operator="minus"
-            result=Number(result)-Number(operand)
+            middleMath=Number(saveResult)-Number(result)
+            console.log(middleMath)
+            result=middleMath.toString()
+            console.log(operator)
             display.innerHTML=result
+            result="0"
+            saveResult=0
+            operator=""
             break
         case "times":
             operator="times"
-            result=Number(result)*Number(operand)
+            middleMath=Number(saveResult)*Number(result)
+            console.log(middleMath)
+            result=middleMath.toString()
+            console.log(operator)
             display.innerHTML=result
+            result="0"
+            saveResult=0
+            operator=""
             break
         case "dividedBy":
             operator="dividedBy"
-            result=Number(result)/Number(operand)
+            middleMath=Number(saveResult)/Number(result)
+            console.log(middleMath)
+            result=middleMath.toString()
+            console.log(operator)
             display.innerHTML=result
+            result="0"
+            saveResult=0
+            operator=""
             break
         default:
             return result="error"
@@ -182,8 +184,8 @@ function equalsResult(){
 }
 
 function clearCalculator(){
-    result=""
-    operand=0
+    result=0
+    saveResult=0
     operator=""
     display.innerHTML=result
 }
