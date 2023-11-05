@@ -37,9 +37,7 @@ h1 {
     height: minmax(3rem, 100%);
     background: #210000;
     border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    text-align: right;
     padding: 0 1rem;
     font-family: 'DM Mono', monospace;
     font-size: 2rem;
