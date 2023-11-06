@@ -20,7 +20,6 @@ const deleteBtn=document.getElementById("delete")
 export default function calculatorOps() {
 
     let numberBtns=document.getElementsByClassName("number")
-    console.log(numberBtns)
     let numberValue
 
     for (let i=0; i<numberBtns.length; i++){
