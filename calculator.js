@@ -118,44 +118,26 @@ function myCalc(calcOperation){
             case "plus":
                 operator="plus"
                 middleMath=Number(saveResult)+Number(result)
-                console.log(middleMath)
-                result=middleMath.toString()
-                operator=calcOperation
-                console.log('Operator going forward:',operator)
-                saveResult=result
-                display.innerHTML=result
                 break
             case "minus":
                 operator="minus"
                 middleMath=Number(saveResult)-Number(result)
-                console.log(middleMath)
-                result=middleMath.toString()
-                operator=calcOperation
-                console.log('Operator going forward:',operator)
-                saveResult=result
-                display.innerHTML=result
                 break
             case "times":
                 middleMath=Number(saveResult)*Number(result)
-                console.log(middleMath)
-                result=middleMath.toString()
-                operator=calcOperation
-                console.log('Operator going forward:',operator)
-                saveResult=result
-                display.innerHTML=result
                 break
             case "dividedBy":
                 middleMath=Number(saveResult)/Number(result)
-                console.log(middleMath)
-                result=middleMath.toString()
-                operator=calcOperation
-                console.log('Operator going forward:',operator)
-                saveResult=result
-                display.innerHTML=result
                 break
             default:
                 return result="error"
         }
+        console.log(middleMath)
+        result=middleMath.toString()
+        operator=calcOperation
+        console.log('Operator going forward:',operator)
+        saveResult=result
+        display.innerHTML=result
     }
 }
 
