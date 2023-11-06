@@ -109,11 +109,9 @@ function myCalc(calcOperation, isEquals){
     if (operator===""){ // First time
         saveResult=result // Take the result and save it
         operator=calcOperation
-        // console.log(saveResult)
-        // console.log(operator)
         display.innerHTML=result
     } else { // Additional times
-        switch (operator) {
+        switch (operator) { // Base calculation on previous operator
             case "plus":
                 operator="plus"
                 middleMath=Number(saveResult)+Number(result)
@@ -131,69 +129,19 @@ function myCalc(calcOperation, isEquals){
             default:
                 return result="error"
         }
-        console.log(middleMath)
         result=middleMath.toString()
-        if (isEquals){
-            
+        if (isEquals){            
             display.innerHTML=result
             saveResult=result
             operator=""
             return
         } else {
         operator=calcOperation
-        // console.log('Operator going forward:',operator)
         saveResult=result
         display.innerHTML=result
         }
     }
 }
-
-// function equalsResult(){
-//     switch (operator) {
-//         case "plus":
-//             operator="plus"
-//             middleMath=Number(saveResult)+Number(result)
-//             console.log(middleMath)
-//             result=middleMath.toString()
-//             console.log(operator)
-//             display.innerHTML=result
-//             saveResult=result
-//             operator=""
-//             break
-//         case "minus":
-//             operator="minus"
-//             middleMath=Number(saveResult)-Number(result)
-//             console.log(middleMath)
-//             result=middleMath.toString()
-//             console.log(operator)
-//             display.innerHTML=result
-//             saveResult=result
-//             operator=""
-//             break
-//         case "times":
-//             operator="times"
-//             middleMath=Number(saveResult)*Number(result)
-//             console.log(middleMath)
-//             result=middleMath.toString()
-//             console.log(operator)
-//             display.innerHTML=result
-//             saveResult=result
-//             operator=""
-//             break
-//         case "dividedBy":
-//             operator="dividedBy"
-//             middleMath=Number(saveResult)/Number(result)
-//             console.log(middleMath)
-//             result=middleMath.toString()
-//             console.log(operator)
-//             display.innerHTML=result
-//             saveResult=result
-//             operator=""
-//             break
-//         default:
-//             return result="error"
-//     }
-// }
 
 function clearCalculator(){
     result=0
