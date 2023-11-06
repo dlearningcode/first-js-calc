@@ -4,12 +4,8 @@ I asked Bing to give me five starter projects to practice and hone my JavaScript
 
 > A calculator: This project will help you practice working with numbers, operators, and user input. You can use HTML elements to create buttons for the digits and operations, and a display area for the result. You can use JavaScript to add event listeners to the buttons, and perform the calculations using the eval() function or your own logic.
 
-My plan is to create the buttons, then add onclick triggers that add the string value of each key to a variable and display it in the display.
+I have taken a couple courses in JavaScript as part of front end development bootcamps and certificate courses, and I watched a couple calendar app YouTube videos, but there is no copy and paste here. I coded it from scratch based on my own pseudo code.
 
-When the user hits one of the operators, that saves the operator for a switch case
+I have all the functionality nailed and refactored to the best I'm currently able. I'm no artist, so leaving the CSS where it is. The result display grows to accommodate large numbers.
 
-2023-11-04 Got the basic functionality. Was calling functions from the event listener rather than references; that hung me up for about two hours to diagnose.
-
-Now, I have to make the screen clear and update properly for all the keys and operations. then it's figuring out how to refactor for tons of repetition. And style, of course.
-
-2023-11-05 I have all the functionality nailed, now just finalizing CSS. Want to make hover and click effects, and get the result display to grow to accommodate large numbers -- right now, they're overflowing the div.
+Hope you get ideas or inspiration from it! Likely one day I'll get inspiration from your work.
