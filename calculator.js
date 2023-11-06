@@ -19,8 +19,8 @@ const deleteBtn=document.getElementById("delete")
 
 export default function calculatorOps() {
 
+    // Get all the number buttons and add event listeners to them
     let numberBtns=document.getElementsByClassName("number")
-    let numberValue
 
     for (let i=0; i<numberBtns.length; i++){
         numberBtns[i].addEventListener("click", () => {
@@ -28,6 +28,7 @@ export default function calculatorOps() {
         })
     }
     
+    // Add event listeners to the non-number buttons
     dotBtn.addEventListener("click", addDot)
     dividedByBtn.addEventListener("click", () => {myCalc("dividedBy", false)})
     multiplyByBtn.addEventListener("click", () => {myCalc("times", false)})
@@ -96,7 +97,7 @@ function myCalc(calcOperation, isEquals){
     // Check if result is a number
     if (isNaN(Number(result))){return}
 
-    if (operator===""){ // First time
+    if (operator===""){ // First time entering operator
         saveResult=result // Take the result and save it
         operator=calcOperation
         display.innerHTML=result
@@ -120,12 +121,12 @@ function myCalc(calcOperation, isEquals){
                 return result="error"
         }
         result=middleMath.toString()
-        if (isEquals){            
+        if (isEquals){ // If equals is pressed, display result and save it
             display.innerHTML=result
             saveResult=result
             operator=""
             return
-        } else {
+        } else { // If not, save the operator and display the result
         operator=calcOperation
         saveResult=result
         display.innerHTML=result
