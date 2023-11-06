@@ -5,16 +5,8 @@ let saveResult=0
 let middleMath=0
 let resultCheck
 
-const zeroKey=document.getElementById("zero")
-const oneKey=document.getElementById("one")
-const twoKey=document.getElementById("two")
-const threeKey=document.getElementById("three")
-const fourKey=document.getElementById("four")
-const fiveKey=document.getElementById("five")
-const sixKey=document.getElementById("six")
-const sevenKey=document.getElementById("seven")
-const eightKey=document.getElementById("eight")
-const nineKey=document.getElementById("nine")
+// Get all the non-number buttons and assign them to variables
+
 const dividedByBtn=document.getElementById("divide")
 const multiplyByBtn=document.getElementById("multiply")
 const subtractBtn=document.getElementById("subtract")
@@ -26,24 +18,23 @@ const signBtn=document.getElementById("sign")
 const deleteBtn=document.getElementById("delete")
 
 export default function calculatorOps() {
-    
-    zeroKey.addEventListener("click", () => {addInput("0")})
-    oneKey.addEventListener("click", () => {addInput("1")})
-    twoKey.addEventListener("click", () => {addInput("2")})
-    threeKey.addEventListener("click", () => {addInput("3")})
-    fourKey.addEventListener("click", () => {addInput("4")})
-    fiveKey.addEventListener("click", () => {addInput("5")})
-    sixKey.addEventListener("click", () => {addInput("6")})
-    sevenKey.addEventListener("click", () => {addInput("7")})
-    eightKey.addEventListener("click", () => {addInput("8")})
-    nineKey.addEventListener("click", () => {addInput("9")})
-    dotBtn.addEventListener("click", addDot)
 
+    let numberBtns=document.getElementsByClassName("number")
+    console.log(numberBtns)
+    let numberValue
+
+    for (let i=0; i<numberBtns.length; i++){
+        numberBtns[i].addEventListener("click", () => {
+            addInput(numberBtns[i].innerHTML)
+        })
+    }
+    
+    dotBtn.addEventListener("click", addDot)
     dividedByBtn.addEventListener("click", () => {myCalc("dividedBy", false)})
     multiplyByBtn.addEventListener("click", () => {myCalc("times", false)})
     subtractBtn.addEventListener("click", () => {myCalc("minus", false)})
     plusBtn.addEventListener("click", () => {myCalc("plus", false)})
-    equalsBtn.addEventListener("click", () => {myCalc(operator, true)}) // equalsResult)
+    equalsBtn.addEventListener("click", () => {myCalc(operator, true)})
     clearBtn.addEventListener("click", clearCalculator)
     deleteBtn.addEventListener("click", deleteLast)
     signBtn.addEventListener("click", toggleSign)
